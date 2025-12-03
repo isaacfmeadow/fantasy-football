@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fantasy Assistant | Trade Analyzer</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Fantasy Assistant</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="lineup.html">Lineup Helper</a></li>
+          <li class="nav-item"><a class="nav-link active" href="trade.html">Trade Analyzer</a></li>
+          <li class="nav-item"><a class="nav-link" href="rankings.html">Rankings</a></li>
+          <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="py-4">
+    <div class="container">
+      <h1 class="h3">Trade Analyzer</h1>
+      <p class="text-muted small">
+        Compare player values, team needs, and projected outcomes. This is the layout only — logic will be added later.
+      </p>
+    </div>
+  </header>
+
+  <main class="pb-5">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- LEFT COLUMN -->
+        <div class="col-lg-7">
+
+          <!-- TRADE INPUT -->
+          <div class="card shadow-sm lineup-card mb-4">
+            <div class="card-body">
+              <h2 class="h5 mb-3">Trade Details</h2>
+
+              <div class="row g-4">
+
+                <!-- TEAM A GIVES -->
+                <div class="col-md-6">
+                  <h6 class="mb-2">Team A Gives</h6>
+                  <div class="trade-box">
+                    <div class="mb-2">
+                      <input type="text" class="form-control form-control-sm" placeholder="Player 1">
+                    </div>
+                    <div class="mb-2">
+                      <input type="text" class="form-control form-control-sm" placeholder="Player 2 (optional)">
+                    </div>
+                    <div class="mb-2">
+                      <input type="text" class="form-control form-control-sm" placeholder="Player 3 (optional)">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- TEAM B GIVES -->
+                <div class="col-md-6">
+                  <h6 class="mb-2">Team B Gives</h6>
+                  <div class="trade-box">
+                    <div class="mb-2">
+                      <input type="text" class="form-control form-control-sm" placeholder="Player 1">
+                    </div>
+                    <div class="mb-2">
+                      <input type="text" class="form-control form-control-sm" placeholder="Player 2 (optional)">
+                    </div>
+                    <div class="mb-2">
+                      <input type="text" class="form-control form-control-sm" placeholder="Player 3 (optional)">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <button class="btn btn-primary btn-sm mt-3" disabled>
+                Analyze Trade (coming soon)
+              </button>
+            </div>
+          </div>
+
+          <!-- TEAM NEEDS -->
+          <div class="card shadow-sm lineup-card">
+            <div class="card-body">
+              <h2 class="h6 mb-2">Team Needs (Optional)</h2>
+              <p class="small text-muted">Later you'll be able to input roster strengths or weaknesses to influence trade evaluation.</p>
+
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label small">Team A Needs</label>
+                  <input type="text" class="form-control form-control-sm" placeholder="e.g. RB help, WR depth">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small">Team B Needs</label>
+                  <input type="text" class="form-control form-control-sm" placeholder="e.g. QB upgrade, TE depth">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: OUTPUT -->
+        <div class="col-lg-5">
+
+          <!-- TRADE SUMMARY -->
+          <div class="card shadow-sm lineup-card mb-4">
+            <div class="card-body">
+              <h2 class="h5 mb-3">Trade Summary (Placeholder)</h2>
+              <p class="small text-muted">
+                Once logic is added, this box will display projected values, winner/loser, risk, and impact.
+              </p>
+
+              <ul class="list-group list-group-flush small text-light">
+                <li class="list-group-item bg-transparent d-flex justify-content-between">
+                  <span>Team A Value:</span>
+                  <strong>123 pts</strong>
+                </li>
+                <li class="list-group-item bg-transparent d-flex justify-content-between">
+                  <span>Team B Value:</span>
+                  <strong>118 pts</strong>
+                </li>
+                <li class="list-group-item bg-transparent d-flex justify-content-between">
+                  <span>Difference:</span>
+                  <strong class="text-success">+5 pts (A)</strong>
+                </li>
+              </ul>
+
+              <div class="alert alert-info mt-3 small">
+                <strong>Grade:</strong> Fair trade. Team A slightly benefits.
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTES -->
+          <div class="card shadow-sm lineup-card">
+            <div class="card-body">
+              <h2 class="h6 mb-2">Notes & Risk Factors</h2>
+              <ul class="small mb-0">
+                <li>Injury risk placeholders</li>
+                <li>Positional scarcity notes</li>
+                <li>Rest-of-season strength of schedule</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-4 bg-dark text-light mt-auto">
+    <div class="container text-center small">
+      &copy; <span id="year"></span> Fantasy Assistant.
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

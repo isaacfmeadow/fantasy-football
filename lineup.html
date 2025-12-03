@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fantasy Assistant | Lineup Helper</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Fantasy Assistant</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="lineup.html">Lineup Helper</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="trade.html">Trade Analyzer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="rankings.html">Rankings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="articles.html">Articles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="py-4">
+    <div class="container">
+      <h1 class="h3 mb-1">Lineup Helper</h1>
+      <p class="text-muted small mb-0">
+        Enter your league settings and roster. In a future step, this page will
+        suggest an optimal starting lineup based on your data.
+      </p>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="pb-5">
+    <div class="container">
+      <div class="row g-4">
+        <!-- LEFT COLUMN: Inputs -->
+        <div class="col-lg-7">
+          <!-- League Settings Card -->
+          <div class="card shadow-sm lineup-card mb-4">
+            <div class="card-body">
+              <h2 class="h5 mb-3">League Settings</h2>
+              <form id="leagueSettingsForm">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="scoringType" class="form-label small">
+                      Scoring Type
+                    </label>
+                    <select id="scoringType" class="form-select form-select-sm">
+                      <option value="ppr" selected>PPR</option>
+                      <option value="half-ppr">Half PPR</option>
+                      <option value="standard">Standard</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="teamSize" class="form-label small">
+                      Roster Size
+                    </label>
+                    <input
+                      type="number"
+                      id="teamSize"
+                      class="form-control form-control-sm"
+                      min="5"
+                      max="25"
+                      value="15"
+                    />
+                  </div>
+
+                  <div class="col-md-4">
+                    <label for="qbSlots" class="form-label small">
+                      QB Slots
+                    </label>
+                    <input
+                      type="number"
+                      id="qbSlots"
+                      class="form-control form-control-sm"
+                      min="0"
+                      max="3"
+                      value="1"
+                    />
+                  </div>
+
+                  <div class="col-md-4">
+                    <label for="rbSlots" class="form-label small">
+                      RB Slots
+                    </label>
+                    <input
+                      type="number"
+                      id="rbSlots"
+                      class="form-control form-control-sm"
+                      min="0"
+                      max="5"
+                      value="2"
+                    />
+                  </div>
+
+                  <div class="col-md-4">
+                    <label for="wrSlots" class="form-label small">
+                      WR Slots
+                    </label>
+                    <input
+                      type="number"
+                      id="wrSlots"
+                      class="form-control form-control-sm"
+                      min="0"
+                      max="5"
+                      value="3"
+                    />
+                  </div>
+
+                  <div class="col-md-4">
+                    <label for="teSlots" class="form-label small">
+                      TE Slots
+                    </label>
+                    <input
+                      type="number"
+                      id="teSlots"
+                      class="form-control form-control-sm"
+                      min="0"
+                      max="3"
+                      value="1"
+                    />
+                  </div>
+
+                  <div class="col-md-4">
+                    <label for="flexSlots" class="form-label small">
+                      FLEX Slots
+                    </label>
+                    <input
+                      type="number"
+                      id="flexSlots"
+                      class="form-control form-control-sm"
+                      min="0"
+                      max="4"
+                      value="1"
+                    />
+                  </div>
+
+                  <div class="col-md-4">
+                    <label for="benchSlots" class="form-label small">
+                      Bench Slots
+                    </label>
+                    <input
+                      type="number"
+                      id="benchSlots"
+                      class="form-control form-control-sm"
+                      min="0"
+                      max="10"
+                      value="6"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Roster Input Card -->
+          <div class="card shadow-sm lineup-card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h5 mb-0">Your Roster</h2>
+                <span class="badge bg-secondary small">
+                  Layout only – no calculation yet
+                </span>
+              </div>
+
+              <p class="small text-muted mb-3">
+                Add your players and their positions. Later, we’ll use this table
+                to build your optimal starting lineup.
+              </p>
+
+              <div class="table-responsive mb-3">
+                <table class="table table-sm table-dark align-middle mb-0">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Player Name</th>
+                      <th scope="col">Pos</th>
+                      <th scope="col">Team</th>
+                      <th scope="col">Opponent</th>
+                      <th scope="col">Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody id="rosterTableBody">
+                    <!-- Sample placeholder rows -->
+                    <tr>
+                      <td>1</td>
+                      <td>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm"
+                          placeholder="Player 1"
+                        />
+                      </td>
+                      <td>
+                        <select class="form-select form-select-sm">
+                          <option>QB</option>
+                          <option>RB</option>
+                          <option>WR</option>
+                          <option>TE</option>
+                          <option>FLEX</option>
+                          <option>DEF</option>
+                          <option>K</option>
+                        </select>
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm"
+                          placeholder="Team"
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm"
+                          placeholder="@ DAL"
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm"
+                          placeholder="Optional notes"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm"
+                          placeholder="Player 2"
+                        />
+                      </td>
+                      <td>
+                        <select class="form-select form-select-sm">
+                          <option>QB</option>
+                          <option>RB</option>
+                          <option>WR</option>
+                          <option>TE</option>
+                          <option>FLEX</option>
+                          <option>DEF</option>
+                          <option>K</option>
+                        </select>
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm"
+                          placeholder="Team"
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm"
+                          placeholder="@ BUF"
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm"
+                          placeholder="Optional notes"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm"
+                          placeholder="Player 3"
+                        />
+                      </td>
+                      <td>
+                        <select class="form-select form-select-sm">
+                          <option>QB</option>
+                          <option>RB</option>
+                          <option>WR</option>
+                          <option>TE</option>
+                          <option>FLEX</option>
+                          <option>DEF</option>
+                          <option>K</option>
+                        </select>
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm"
+                          placeholder="Team"
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm"
+                          placeholder="vs PHI"
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm"
+                          placeholder="Optional notes"
+                        />
+                      </td>
+                    </tr>
+                    <!-- You can duplicate rows manually for now -->
+                  </tbody>
+                </table>
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-outline-light btn-sm"
+                disabled
+              >
+                + Add Row (coming soon)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Output / Summary -->
+        <div class="col-lg-5">
+          <!-- Suggested Lineup Card -->
+          <div class="card shadow-sm lineup-card mb-4">
+            <div class="card-body">
+              <h2 class="h5 mb-3">Suggested Lineup (Placeholder)</h2>
+              <p class="small text-muted">
+                In a future step, this box will be auto-filled based on your
+                roster and league settings. For now, it’s just a mock layout.
+              </p>
+
+              <ul class="list-group list-group-flush small lineup-list">
+                <li class="list-group-item bg-transparent text-light d-flex justify-content-between">
+                  <span>QB</span>
+                  <span class="fw-semibold">Player 1 (Team)</span>
+                </li>
+                <li class="list-group-item bg-transparent text-light d-flex justify-content-between">
+                  <span>RB1</span>
+                  <span class="fw-semibold">Player 2 (Team)</span>
+                </li>
+                <li class="list-group-item bg-transparent text-light d-flex justify-content-between">
+                  <span>RB2</span>
+                  <span class="fw-semibold">Player 3 (Team)</span>
+                </li>
+                <li class="list-group-item bg-transparent text-light d-flex justify-content-between">
+                  <span>WR1</span>
+                  <span class="fw-semibold">Player 4 (Team)</span>
+                </li>
+                <li class="list-group-item bg-transparent text-light d-flex justify-content-between">
+                  <span>WR2</span>
+                  <span class="fw-semibold">Player 5 (Team)</span>
+                </li>
+                <li class="list-group-item bg-transparent text-light d-flex justify-content-between">
+                  <span>FLEX</span>
+                  <span class="fw-semibold">Player 6 (Team)</span>
+                </li>
+                <li class="list-group-item bg-transparent text-light d-flex justify-content-between">
+                  <span>TE</span>
+                  <span class="fw-semibold">Player 7 (Team)</span>
+                </li>
+                <li class="list-group-item bg-transparent text-light d-flex justify-content-between">
+                  <span>DEF</span>
+                  <span class="fw-semibold">Defense (Team)</span>
+                </li>
+                <li class="list-group-item bg-transparent text-light d-flex justify-content-between">
+                  <span>K</span>
+                  <span class="fw-semibold">Kicker (Team)</span>
+                </li>
+              </ul>
+
+              <div class="alert alert-info mt-3 small mb-0">
+                <strong>Note:</strong> Later we’ll hook up JavaScript to read
+                your inputs on the left and dynamically build this lineup for you.
+              </div>
+            </div>
+          </div>
+
+          <!-- Bench / Notes Card -->
+          <div class="card shadow-sm lineup-card">
+            <div class="card-body">
+              <h2 class="h6 mb-2">Bench & Notes</h2>
+              <p class="small text-muted">
+                This space can be used later for:
+              </p>
+              <ul class="small mb-0">
+                <li>Bench players by risk tier</li>
+                <li>Start/sit notes</li>
+                <li>Matchup difficulty indicators</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-4 bg-dark text-light mt-auto">
+    <div class="container text-center small">
+      &copy; <span id="year"></span> Fantasy Assistant.
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  ></script>
+
+  <!-- App JS -->
+  <script src="assets/js/app.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

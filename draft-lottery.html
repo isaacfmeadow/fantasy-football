@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fantasy Assistant | Draft Lottery</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Fantasy Assistant</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="lineup.html">Lineup Helper</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="trade.html">Trade Analyzer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="rankings.html">Rankings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="articles.html">Articles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <!-- New nav item just on this page for now -->
+          <li class="nav-item">
+            <a class="nav-link active" href="draft-lottery.html">Draft Lottery</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER / HERO -->
+  <header class="py-4 lottery-hero">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-7">
+          <h1 class="h2 mb-2 text-uppercase">
+            Draft Lottery Night
+          </h1>
+          <p class="text-muted-light small mb-2">
+            Throw your league into the drum and let the football gods decide.
+          </p>
+          <p class="small mb-0 text-muted-light">
+            Enter team names, hit the button, and watch the picks get revealed
+            one by one with vintage gameday suspense.
+          </p>
+        </div>
+        <div class="col-lg-5">
+          <div class="lottery-badge text-center">
+            <div class="lottery-badge-inner">
+              <span class="lottery-badge-label">Official</span>
+              <div class="lottery-badge-title">Draft<br />Lottery</div>
+              <div class="lottery-badge-subtext">Fantasy Assistant</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="pb-5">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- LEFT: INPUTS -->
+        <div class="col-lg-6">
+          <div class="card shadow-sm lineup-card lottery-card">
+            <div class="card-body">
+              <h2 class="h5 mb-3">League Entries</h2>
+              <p class="small text-muted mb-3">
+                Type one team name per line. You can use team names, manager names, or inside jokes.
+              </p>
+
+              <form id="lotteryForm">
+                <div class="mb-3">
+                  <label for="lotteryTeams" class="form-label small">
+                    Teams (one per line)
+                  </label>
+                  <textarea
+                    id="lotteryTeams"
+                    class="form-control"
+                    rows="8"
+                    placeholder="Example:
+Team 1
+Team 2
+Team 3
+Team 4
+Team 5"
+                  ></textarea>
+                </div>
+
+                <div class="row g-2 align-items-end">
+                  <div class="col-sm-6">
+                    <label for="lotteryTitle" class="form-label small">
+                      Event Title (optional)
+                    </label>
+                    <input
+                      type="text"
+                      id="lotteryTitle"
+                      class="form-control form-control-sm"
+                      placeholder="2025 Draft Lottery"
+                    />
+                  </div>
+                  <div class="col-sm-6 text-sm-end">
+                    <button
+                      type="submit"
+                      id="runLotteryBtn"
+                      class="btn btn-primary mt-3 mt-sm-0"
+                    >
+                      Start Lottery
+                    </button>
+                  </div>
+                </div>
+
+                <p id="lotteryError" class="small text-danger mt-2 mb-0 d-none">
+                  Please enter at least 2 team names.
+                </p>
+              </form>
+
+              <p class="small text-muted mt-3 mb-0">
+                The order will be randomized and slowly revealed on the right.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: LOTTERY STAGE / RESULTS -->
+        <div class="col-lg-6">
+          <div class="lottery-stage card shadow-sm">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h2 class="h5 mb-0" id="lotteryTitleDisplay">
+                  Draft Order Reveal
+                </h2>
+                <span class="small text-muted" id="lotteryStatus">
+                  Waiting to start...
+                </span>
+              </div>
+
+              <hr class="mt-2 mb-3" />
+
+              <ol class="list-unstyled lottery-results" id="lotteryResults">
+                <!-- Picks will be injected here by JS -->
+                <li class="lottery-placeholder text-muted small">
+                  No picks yet. Run the lottery to reveal the order.
+                </li>
+              </ol>
+
+              <div class="small text-muted mt-3 mb-0">
+                Picks are revealed from the <strong>last</strong> pick up to the
+                <strong>1st overall</strong> to keep the suspense high.
+              </div>
+            </div>
+          </div>
+
+          <!-- Small tips card -->
+          <div class="card shadow-sm lineup-card mt-3">
+            <div class="card-body">
+              <h2 class="h6 mb-2">House Rules Ideas</h2>
+              <ul class="small mb-0">
+                <li>Stream this page on your TV for draft night.</li>
+                <li>Require losers to announce their pick number out loud.</li>
+                <li>Run multiple lotteries: one for draft order, one for divisions.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-4 bg-dark text-light mt-auto">
+    <div class="container text-center small">
+      &copy; <span id="year"></span> Fantasy Assistant.
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  ></script>
+
+  <!-- App JS -->
+  <script src="assets/js/app.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+

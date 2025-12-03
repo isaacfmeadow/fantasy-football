@@ -1,0 +1,486 @@
+/* ==============
+   GLOBAL
+   ============== */
+
+   :root {
+    --field-green: #1f4c2e;
+    --field-green-dark: #14341f;
+    --leather-brown: #8b5a2b;
+    --chalk-white: #f7f3e8;
+    --paper: #f2efe6;
+    --ink: #222222;
+    --muted-ink: #555555;
+    --line-grey: #d8d2c4;
+  }
+  
+  /* Give everything a slightly warm, printed feel */
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Keep containers visually grounded but subtle */
+  main .container,
+  .hero-section .container,
+  header .container {
+    background: transparent;
+  }
+  
+  /* Links: subtle, not neon */
+  a {
+    color: var(--field-green);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Headings more “poster” style */
+  h1, h2, h3, h4, h5 {
+    letter-spacing: 0.03em;
+    text-transform: none;
+  }
+  
+  /* ==============
+     NAVBAR
+     ============== */
+  
+  .navbar {
+    background: linear-gradient(
+      to bottom,
+      var(--field-green) 0%,
+      var(--field-green-dark) 100%
+    ) !important;
+    border-bottom: 4px solid var(--leather-brown);
+  }
+  
+  .navbar-brand {
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+  }
+  
+  .navbar-dark .navbar-nav .nav-link {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  
+  .navbar-dark .navbar-nav .nav-link.active,
+  .navbar-dark .navbar-nav .nav-link:hover {
+    color: var(--chalk-white);
+    border-bottom: 2px solid var(--chalk-white);
+  }
+  
+  /* ==============
+     HERO SECTION
+     ============== */
+  
+  .hero-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(31, 76, 46, 0.94),
+        rgba(20, 52, 31, 0.96)
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        rgba(255, 255, 255, 0.06),
+        rgba(255, 255, 255, 0.06) 2px,
+        transparent 2px,
+        transparent 6px
+      );
+    color: var(--chalk-white);
+    border-bottom: 4px solid var(--leather-brown);
+  }
+  
+  .hero-section h1 {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 1.9rem;
+  }
+  
+  .hero-section .lead {
+    color: #fdf9ec;
+    max-width: 40rem;
+  }
+  
+  /* Hero “card” like a laminated play sheet */
+  .hero-card {
+    background: rgba(247, 243, 232, 0.97);
+    color: var(--ink);
+    border-radius: 12px;
+    border: 2px solid var(--line-grey);
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.25);
+  }
+  
+  /* ==============
+     BUTTONS
+     ============== */
+  
+  .btn-primary {
+    background-color: var(--leather-brown);
+    border-color: #6c3e18;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+    padding: 0.55rem 1.3rem;
+  }
+  
+  .btn-primary:hover {
+    background-color: #6c3e18;
+    border-color: #542f11;
+  }
+  
+  .btn-outline-light {
+    color: var(--chalk-white);
+    border-color: var(--chalk-white);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+    padding: 0.55rem 1.3rem;
+  }
+  
+  .btn-outline-light:hover {
+    background-color: var(--chalk-white);
+    color: var(--field-green-dark);
+  }
+  
+  /* ==============
+     TOOL CARDS / GENERIC CARDS
+     ============== */
+  
+  .tool-card,
+  .lineup-card {
+    background: var(--chalk-white);
+    border-radius: 10px;
+    border: 1px solid var(--line-grey);
+    box-shadow: 0 0.3rem 0.7rem rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .tool-card::before,
+  .lineup-card::before {
+    /* Faint “playbook” hash marks */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.03) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.03) 1px,
+        transparent 1px
+      );
+    background-size: 28px 28px;
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  
+  .tool-card > .card-body,
+  .lineup-card > .card-body {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Hover like flipping a play sheet */
+  .tool-card {
+    transition: transform 0.1s ease, box-shadow 0.1s ease,
+      border-color 0.1s ease;
+  }
+  
+  .tool-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.55rem 1.1rem rgba(0, 0, 0, 0.2);
+    border-color: var(--leather-brown);
+  }
+  
+  /* ==============
+     TABLES
+     ============== */
+  
+  table.table {
+    background-color: var(--chalk-white);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .table thead {
+    background-color: var(--field-green);
+    color: var(--chalk-white);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+  }
+  
+  .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: #f1ebdd;
+  }
+  
+  .table-striped > tbody > tr:nth-of-type(even) > * {
+    background-color: #f9f5ea;
+  }
+  
+  .table > :not(caption) > * > * {
+    border-color: #e0d8c6;
+  }
+  
+  /* ==============
+     FORMS
+     ============== */
+  
+  .form-control,
+  .form-select {
+    background-color: #faf6ec;
+    border: 1px solid #d6ccb8;
+    font-size: 0.85rem;
+  }
+  
+  .form-control:focus,
+  .form-select:focus {
+    background-color: #fff;
+    border-color: var(--field-green);
+    box-shadow: 0 0 0 0.1rem rgba(31, 76, 46, 0.25);
+  }
+  
+  .form-control::placeholder {
+    color: #9a907f;
+    font-size: 0.8rem;
+  }
+  
+  /* Trade input boxes */
+  .trade-box input {
+    background: #faf6ec;
+    border: 1px solid #d6ccb8;
+    color: var(--ink);
+  }
+  
+  .trade-box input::placeholder {
+    color: #a79b87;
+  }
+  
+  /* ==============
+     LIST GROUPS (Suggested Lineup / Trade summary)
+     ============== */
+  
+  .lineup-list .list-group-item,
+  .list-group-item.bg-transparent {
+    background-color: transparent;
+    border-color: #e0d8c6;
+    color: var(--ink);
+  }
+  
+  /* ==============
+     TEXT UTILITIES
+     ============== */
+  
+  .text-muted {
+    color: var(--muted-ink) !important;
+  }
+  
+  /* ==============
+     FOOTER
+     ============== */
+  
+  footer {
+    margin-top: auto;
+    background: #e0d8c6;
+    border-top: 3px solid var(--field-green-dark);
+    font-size: 0.8rem;
+    color: var(--ink);
+  }
+  
+  /* ==============
+     RESPONSIVE TWEAKS
+     ============== */
+  
+  @media (max-width: 767.98px) {
+    .hero-section h1 {
+      font-size: 1.5rem;
+      letter-spacing: 0.1em;
+    }
+  
+    .navbar-brand {
+      letter-spacing: 0.08em;
+    }
+  }
+ /* Rankings position pills */
+.rankings-pills .nav-link {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.35rem 0.75rem;
+  }
+  
+  .rankings-pills .nav-link.active {
+    background-color: var(--field-green);
+  }
+  
+  /* Tier badges a bit more old-school */
+  .tier-badge {
+    border-radius: 999px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+/* ==============
+   DRAFT LOTTERY
+   ============== */
+
+   .lottery-hero {
+    background:
+      radial-gradient(circle at top left, rgba(31, 76, 46, 0.95), rgba(20, 52, 31, 0.98)),
+      repeating-linear-gradient(
+        45deg,
+        rgba(247, 243, 232, 0.08),
+        rgba(247, 243, 232, 0.08) 4px,
+        transparent 4px,
+        transparent 10px
+      );
+    color: var(--chalk-white);
+    border-bottom: 4px solid var(--leather-brown);
+  }
+  
+  .text-muted-light {
+    color: rgba(247, 243, 232, 0.8);
+  }
+  
+  /* Round vintage badge on the right */
+  .lottery-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .lottery-badge-inner {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid var(--chalk-white);
+    background:
+      radial-gradient(circle at top, #f7f3e8, #e0d8c6),
+      repeating-linear-gradient(
+        -45deg,
+        rgba(139, 90, 43, 0.15),
+        rgba(139, 90, 43, 0.15) 6px,
+        transparent 6px,
+        transparent 12px
+      );
+    box-shadow: 0 0.7rem 1.5rem rgba(0, 0, 0, 0.4);
+    padding: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .lottery-badge-label {
+    font-size: 0.65rem;
+    color: #7c6a4e;
+  }
+  
+  .lottery-badge-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-align: center;
+    line-height: 1.1;
+    margin: 0.4rem 0;
+  }
+  
+  .lottery-badge-subtext {
+    font-size: 0.6rem;
+    color: #8b5a2b;
+  }
+  
+  /* Card tweak */
+  .lottery-card {
+    position: relative;
+  }
+  
+  /* Stage / results area */
+  .lottery-stage {
+    background: var(--chalk-white);
+    border-radius: 12px;
+    border: 2px solid var(--line-grey);
+    box-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.25);
+  }
+  
+  /* Results list */
+  .lottery-results {
+    margin: 0;
+    padding-left: 0;
+  }
+  
+  .lottery-results li {
+    list-style: none;
+  }
+  
+  .lottery-pick-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px dashed #d1c6af;
+    font-size: 0.9rem;
+  }
+  
+  .lottery-pick-row:last-child {
+    border-bottom: none;
+  }
+  
+  .lottery-pick-number {
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: var(--muted-ink);
+  }
+  
+  .lottery-pick-team {
+    font-weight: 700;
+  }
+  
+  /* Animations for reveal */
+  .lottery-pick-row.revealed {
+    animation: lotteryFadeIn 0.4s ease-out;
+  }
+  
+  @keyframes lotteryFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .lottery-placeholder {
+    padding: 0.25rem 0;
+  }
+  
+  /* Mobile tweaks */
+  @media (max-width: 767.98px) {
+    .lottery-badge-inner {
+      width: 140px;
+      height: 140px;
+    }
+  }
+    
+    

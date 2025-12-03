@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fantasy Assistant | Rankings</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Fantasy Assistant</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="lineup.html">Lineup Helper</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="trade.html">Trade Analyzer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="rankings.html">Rankings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="articles.html">Articles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="py-4">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <div>
+          <h1 class="h3 mb-1">Rankings & Tiers</h1>
+          <p class="text-muted small mb-0">
+            Weekly and rest-of-season rankings. Layout only for now – we’ll hook this up to real data later.
+          </p>
+        </div>
+        <div class="d-flex flex-wrap align-items-center gap-2">
+          <!-- Week selector -->
+          <div>
+            <label for="weekSelect" class="form-label small mb-1">Week</label>
+            <select id="weekSelect" class="form-select form-select-sm">
+              <option selected>Week 1</option>
+              <option>Week 2</option>
+              <option>Week 3</option>
+              <option>Week 4</option>
+              <option>Week 5</option>
+              <option>Week 6</option>
+              <option>Week 7</option>
+              <option>Week 8</option>
+              <option>Week 9</option>
+              <option>Week 10</option>
+              <option>Week 11</option>
+              <option>Week 12</option>
+              <option>Week 13</option>
+              <option>Playoffs</option>
+            </select>
+          </div>
+
+          <!-- Type selector -->
+          <div>
+            <label for="viewTypeSelect" class="form-label small mb-1">View</label>
+            <select id="viewTypeSelect" class="form-select form-select-sm">
+              <option selected>Weekly</option>
+              <option>Rest of Season</option>
+              <option>Draft (Preseason)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="pb-5">
+    <div class="container">
+      <div class="row g-4">
+        <!-- LEFT: Rankings table -->
+        <div class="col-lg-8">
+          <div class="card shadow-sm lineup-card mb-3">
+            <div class="card-body">
+              <!-- Position tabs -->
+              <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+                <ul class="nav nav-pills rankings-pills">
+                  <li class="nav-item">
+                    <button class="nav-link active" type="button">QB</button>
+                  </li>
+                  <li class="nav-item">
+                    <button class="nav-link" type="button">RB</button>
+                  </li>
+                  <li class="nav-item">
+                    <button class="nav-link" type="button">WR</button>
+                  </li>
+                  <li class="nav-item">
+                    <button class="nav-link" type="button">TE</button>
+                  </li>
+                  <li class="nav-item">
+                    <button class="nav-link" type="button">FLEX</button>
+                  </li>
+                  <li class="nav-item">
+                    <button class="nav-link" type="button">DEF</button>
+                  </li>
+                </ul>
+
+                <!-- Small legend -->
+                <div class="small text-muted">
+                  <span class="badge bg-success me-1 tier-badge">Tier 1</span>
+                  <span class="badge bg-secondary me-1 tier-badge">Tier 2</span>
+                  <span class="badge bg-warning text-dark tier-badge">Tier 3</span>
+                </div>
+              </div>
+
+              <!-- Rankings table -->
+              <div class="table-responsive">
+                <table class="table table-striped align-middle mb-0">
+                  <thead>
+                    <tr>
+                      <th scope="col">Rank</th>
+                      <th scope="col">Player</th>
+                      <th scope="col">Team</th>
+                      <th scope="col">Opp</th>
+                      <th scope="col">Tier</th>
+                      <th scope="col">Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Sample QB #1</td>
+                      <td>KC</td>
+                      <td>@ BUF</td>
+                      <td><span class="badge bg-success tier-badge">Tier 1</span></td>
+                      <td class="small">
+                        Elite weekly ceiling; projected high-scoring matchup.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Sample QB #2</td>
+                      <td>CIN</td>
+                      <td>vs BAL</td>
+                      <td><span class="badge bg-success tier-badge">Tier 1</span></td>
+                      <td class="small">
+                        Strong floor with rushing upside.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Sample QB #3</td>
+                      <td>PHI</td>
+                      <td>@ DAL</td>
+                      <td><span class="badge bg-secondary tier-badge">Tier 2</span></td>
+                      <td class="small">
+                        Slightly tougher matchup; still a must-start in most leagues.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Sample QB #4</td>
+                      <td>SF</td>
+                      <td>@ SEA</td>
+                      <td><span class="badge bg-secondary tier-badge">Tier 2</span></td>
+                      <td class="small">
+                        Volume concerns if game script turns run-heavy.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>Sample QB #5</td>
+                      <td>JAX</td>
+                      <td>vs HOU</td>
+                      <td><span class="badge bg-warning text-dark tier-badge">Tier 3</span></td>
+                      <td class="small">
+                        Streaming option; viable in deeper leagues or 2QB formats.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p class="small text-muted mt-3 mb-0">
+                Later we can make this table sortable and driven by JSON data, so you only update one rankings file instead of editing raw HTML.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Sidebar info -->
+        <div class="col-lg-4">
+          <!-- Notes card -->
+          <div class="card shadow-sm lineup-card mb-3">
+            <div class="card-body">
+              <h2 class="h6 mb-2">How to Use These Rankings</h2>
+              <p class="small text-muted mb-2">
+                Use weekly rankings for lineup decisions, and rest-of-season rankings for trades and stash decisions.
+              </p>
+              <ul class="small mb-0">
+                <li>Tier 1 = Set-and-forget starters</li>
+                <li>Tier 2 = Strong starters with some risk</li>
+                <li>Tier 3+ = Matchup-dependent / streaming</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Future Filters -->
+          <div class="card shadow-sm lineup-card">
+            <div class="card-body">
+              <h2 class="h6 mb-2">Planned Filters</h2>
+              <p class="small text-muted mb-2">
+                Later we can add:
+              </p>
+              <ul class="small mb-0">
+                <li>Scoring type (PPR / Half / Standard)</li>
+                <li>League size (8 / 10 / 12 / 14)</li>
+                <li>Custom tags (DFS, upside, floor)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-4 bg-dark text-light mt-auto">
+    <div class="container text-center small">
+      &copy; <span id="year"></span> Fantasy Assistant.
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  ></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
