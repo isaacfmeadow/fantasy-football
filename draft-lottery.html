@@ -15,10 +15,12 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-  <!-- NAVBAR -->
+  <!-- NAVBAR: global site navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">Fantasy Assistant</a>
+      <a class="navbar-brand fw-bold" href="index.html">
+        Fantasy Assistant
+      </a>
       <button
         class="navbar-toggler"
         type="button"
@@ -46,14 +48,13 @@
             <a class="nav-link" href="rankings.html">Rankings</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link active" href="draft-lottery.html">Draft Lottery</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="articles.html">Articles</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="about.html">About</a>
-          </li>
-          <!-- New nav item just on this page for now -->
-          <li class="nav-item">
-            <a class="nav-link active" href="draft-lottery.html">Draft Lottery</a>
           </li>
         </ul>
       </div>
@@ -79,9 +80,14 @@
         <div class="col-lg-5">
           <div class="lottery-badge text-center">
             <div class="lottery-badge-inner">
-              <span class="lottery-badge-label">Official</span>
-              <div class="lottery-badge-title">Draft<br />Lottery</div>
-              <div class="lottery-badge-subtext">Fantasy Assistant</div>
+              <div class="lottery-football-icon">
+                <div class="lottery-football-laces"></div>
+              </div>
+              <div class="lottery-badge-text">
+                <span class="lottery-badge-label">Fantasy Assistant</span>
+                <div class="lottery-badge-title">Draft Lottery</div>
+                <div class="lottery-badge-subtext">Gameday Edition</div>
+              </div>
             </div>
           </div>
         </div>
@@ -122,7 +128,7 @@ Team 5"
                 </div>
 
                 <div class="row g-2 align-items-end">
-                  <div class="col-sm-6">
+                  <div class="col-sm-4">
                     <label for="lotteryTitle" class="form-label small">
                       Event Title (optional)
                     </label>
@@ -133,7 +139,22 @@ Team 5"
                       placeholder="2025 Draft Lottery"
                     />
                   </div>
-                  <div class="col-sm-6 text-sm-end">
+
+                  <div class="col-sm-4">
+                    <label for="revealSpeed" class="form-label small">
+                      Reveal Speed
+                    </label>
+                    <select
+                      id="revealSpeed"
+                      class="form-select form-select-sm"
+                    >
+                      <option value="slow">Slow</option>
+                      <option value="normal" selected>Normal</option>
+                      <option value="fast">Fast</option>
+                    </select>
+                  </div>
+
+                  <div class="col-sm-4 text-sm-end">
                     <button
                       type="submit"
                       id="runLotteryBtn"
@@ -178,10 +199,39 @@ Team 5"
                 </li>
               </ol>
 
-              <div class="small text-muted mt-3 mb-0">
+              <!-- Big highlight for 1st overall -->
+              <div
+                id="lotteryChampionBanner"
+                class="lottery-champion-banner d-none mt-3"
+              >
+                <span class="lottery-champion-label">1st Overall:</span>
+                <span class="lottery-champion-team" id="lotteryChampionTeam"></span>
+              </div>
+
+              <!-- Extra controls -->
+              <div class="d-flex flex-wrap gap-2 mt-3">
+                <button
+                  type="button"
+                  id="rerunLotteryBtn"
+                  class="btn btn-outline-secondary btn-sm"
+                  disabled
+                >
+                  Rerun with same teams
+                </button>
+                <button
+                  type="button"
+                  id="copyLotteryBtn"
+                  class="btn btn-outline-secondary btn-sm"
+                  disabled
+                >
+                  Copy Draft Order
+                </button>
+              </div>
+
+              <p class="small text-muted mt-2 mb-0">
                 Picks are revealed from the <strong>last</strong> pick up to the
                 <strong>1st overall</strong> to keep the suspense high.
-              </div>
+              </p>
             </div>
           </div>
 
@@ -221,4 +271,5 @@ Team 5"
   </script>
 </body>
 </html>
+
 

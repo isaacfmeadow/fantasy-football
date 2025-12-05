@@ -482,5 +482,477 @@
       height: 140px;
     }
   }
-    
-    
+/* Football-style badge */
+
+.lottery-badge-inner {
+  width: 220px;
+  min-height: 140px;
+  border-radius: 18px;
+  border: 3px solid var(--chalk-white);
+  background:
+    linear-gradient(to bottom, #f7f3e8, #e0d8c6),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(139, 90, 43, 0.14),
+      rgba(139, 90, 43, 0.14) 6px,
+      transparent 6px,
+      transparent 12px
+    );
+  box-shadow: 0 0.7rem 1.5rem rgba(0, 0, 0, 0.4);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lottery-football-icon {
+  width: 80px;
+  height: 48px;
+  background: var(--leather-brown);
+  border-radius: 50% / 60%;
+  position: relative;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+  margin-bottom: 0.6rem;
+}
+
+/* White stripes on ends */
+.lottery-football-icon::before,
+.lottery-football-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 60%;
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-50%);
+}
+
+.lottery-football-icon::before {
+  left: 8px;
+}
+
+.lottery-football-icon::after {
+  right: 8px;
+}
+
+/* Laces */
+.lottery-football-laces {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 36px;
+  height: 4px;
+  background: #fdf9ec;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+}
+
+.lottery-football-laces::before,
+.lottery-football-laces::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 14px;
+  background: #fdf9ec;
+  border-radius: 999px;
+}
+
+.lottery-football-laces::before {
+  left: 10px;
+  top: -5px;
+}
+
+.lottery-football-laces::after {
+  right: 10px;
+  top: -5px;
+}
+
+.lottery-badge-text {
+  text-align: center;
+}
+
+.lottery-badge-label {
+  font-size: 0.65rem;
+  color: #7c6a4e;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.lottery-badge-title {
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.lottery-badge-subtext {
+  font-size: 0.65rem;
+  color: #8b5a2b;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Highlight for 1st overall */
+
+.lottery-first-pick {
+  background-color: #fff6d5;
+  border-radius: 6px;
+  border: 1px solid #e1c676;
+}
+
+.lottery-champion-banner {
+  background: #fff6d5;
+  border: 1px solid #e1c676;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.lottery-champion-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #7c6a4e;
+}
+
+.lottery-champion-team {
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+/* First overall highlight animation */
+
+.lottery-first-pick {
+  background-color: #fff6d5;
+  border-radius: 6px;
+  border: 1px solid #e1c676;
+  animation: firstPickPulse 1s ease-out 2;
+}
+
+@keyframes firstPickPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(225, 198, 118, 0.7);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 8px rgba(225, 198, 118, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(225, 198, 118, 0);
+  }
+}
+
+/* Champion banner entrance + glow */
+
+.lottery-champion-banner {
+  background: #fff6d5;
+  border: 1px solid #e1c676;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  opacity: 0; /* start hidden for animation */
+  transform: translateY(8px) scale(0.95);
+}
+
+.lottery-champion-banner.lottery-champion-animate {
+  animation: championPop 0.6s ease-out forwards,
+             championGlow 1.4s ease-out 0.2s 2;
+}
+
+@keyframes championPop {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.8);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes championGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(225, 198, 118, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(225, 198, 118, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(225, 198, 118, 0);
+  }
+}
+/* ==============
+   ARTICLES / SCOUT'S NOTEBOOK STYLE
+   ============== */
+
+/* Header like the cover of a scouting binder */
+.articles-hero {
+  background:
+    linear-gradient(to bottom, #2c3c3a, #222d2b);
+  color: var(--chalk-white);
+  border-bottom: 4px solid var(--leather-brown);
+}
+
+.articles-masthead-kicker {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(247, 243, 232, 0.8);
+}
+
+.articles-masthead-title {
+  font-size: 1.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 0.35rem 1.2rem;
+  margin-bottom: 0.15rem;
+  border: 2px solid rgba(247, 243, 232, 0.8);
+  border-radius: 4px;
+}
+
+.articles-masthead-meta {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(247, 243, 232, 0.75);
+}
+
+/* Doodles container (X's and O's, arrows) */
+.articles-doodles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.doodle {
+  position: absolute;
+  font-size: 1.2rem;
+  color: rgba(34, 45, 43, 0.4);
+  font-weight: 700;
+  transform: rotate(-12deg);
+}
+
+.doodle-xo {
+  top: 12%;
+  left: 5%;
+}
+
+.doodle-arrow {
+  bottom: 18%;
+  right: 9%;
+  transform: rotate(18deg);
+  font-size: 1.4rem;
+}
+
+.doodle-circle {
+  top: 55%;
+  right: 3%;
+  font-size: 1.3rem;
+  transform: rotate(-5deg);
+}
+
+/* Main area like a legal pad on a desk */
+.articles-container {
+  margin-top: 1.5rem;
+  padding: 1.5rem 1.25rem;
+  background:
+    linear-gradient(to bottom, #f9f4e5, #f2ebd9);
+  border-radius: 10px;
+  border: 2px solid #d5c9b1;
+  box-shadow: 0 0.7rem 1.4rem rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle “margin line” down the left like a notebook */
+.articles-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 56px;
+  width: 2px;
+  background: rgba(216, 88, 88, 0.5);
+  pointer-events: none;
+}
+
+/* Faint horizontal rules like lined paper */
+.articles-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(150, 140, 120, 0.24) 1px,
+    transparent 1px
+  );
+  background-size: 100% 24px;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* Labels like section headings scribbled at top of a page */
+.articles-section-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #5e5138;
+  border-bottom: 1px solid rgba(94, 81, 56, 0.4);
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.3rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Article previews like written notes on the pad */
+.article-preview {
+  position: relative;
+  z-index: 1;
+  padding: 0.6rem 0.5rem 0.8rem 0.5rem;
+  margin-bottom: 0.2rem;
+  border-bottom: 1px dashed rgba(163, 145, 110, 0.8);
+}
+
+.article-preview:last-child {
+  border-bottom: none;
+}
+
+.article-preview-lead {
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 2px solid rgba(163, 145, 110, 0.9);
+  margin-bottom: 0.4rem;
+}
+
+/* “CONFIDENTIAL” stamp on lead article */
+.article-stamp {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.7rem;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(153, 38, 38, 0.9);
+  border: 1px solid rgba(153, 38, 38, 0.9);
+  padding: 0.15rem 0.5rem;
+  transform: rotate(-9deg);
+  background: rgba(249, 244, 229, 0.92);
+}
+
+/* Titles: mix of “typed heading” + slightly rough feel */
+.article-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.03em;
+}
+
+/* Meta row: looks like a GM’s stamped info line */
+.article-meta {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #7b6a4b;
+  margin-bottom: 0.35rem;
+}
+
+.article-divider {
+  margin: 0 0.35rem;
+}
+
+.article-tag {
+  font-weight: 700;
+}
+
+/* Body text like scribbled scouting notes */
+.article-summary {
+  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
+  color: #3d3322;
+}
+
+/* "Read more" like a little underlined note */
+.article-read-more {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  text-decoration: underline;
+}
+
+/* Sidebar boxes: sticky-note scouting cards */
+.article-sidebar-box {
+  position: relative;
+  z-index: 1;
+  background-color: #fff8cf;
+  border: 1px solid #d7c780;
+  padding: 0.75rem 0.9rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.18);
+  transform: rotate(-1.2deg);
+  margin-bottom: 1rem;
+}
+
+.article-sidebar-box:nth-child(2) {
+  transform: rotate(1deg);
+  background-color: #ffeec2;
+}
+
+.article-sidebar-box:nth-child(3) {
+  transform: rotate(-0.6deg);
+}
+
+/* Little “tape” strip at top of sticky notes */
+.article-sidebar-box::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 35%;
+  width: 40%;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Sidebar headings: stamped labels */
+.sidebar-heading {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.4rem;
+  color: #5a4b32;
+}
+
+/* Bullets: scribbled list feel */
+.sidebar-list {
+  padding-left: 1.1rem;
+}
+
+.sidebar-list li {
+  margin-bottom: 0.25rem;
+}
+
+/* Notebook-style divider */
+.articles-divider {
+  border-top: 1px dashed rgba(163, 145, 110, 0.9);
+  margin: 1rem 0;
+}
+
+/* Mobile tweaks */
+@media (max-width: 767.98px) {
+  .articles-container::before {
+    left: 40px;
+  }
+}
