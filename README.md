@@ -69,8 +69,10 @@ Follow these steps to run the project locally.
 
 ---
 
-### 1 Clone the Repository
-### 2 Create a new virtual environment
-### 3 Activate the new virtual environment
-### 4 Install the dependencies
-### 5 Run the application with flask run or python app.py
+### 1. Clone the Repository
+### 2. Create a new virtual environment
+python -m venv venv
+
+### 3. Activate the new virtual environment
+### 4. Install the dependencies
+### 5. Run the application with flask run or python app.py
